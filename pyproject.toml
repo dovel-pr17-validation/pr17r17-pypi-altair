@@ -67,7 +67,7 @@ all = [
     "numpy",
     "pyarrow>=11",
     "vegafusion>=2.0.3",
-    "anywidget>=0.9.0",
+    "anywidget>=0.11.0",
     "altair_tiles>=0.3.0"
 ]
 dev = [
