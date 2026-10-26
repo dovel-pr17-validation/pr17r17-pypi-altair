@@ -68,7 +68,7 @@ all = [
     "pyarrow>=11",
     "vegafusion>=2.0.3",
     "anywidget>=0.9.0",
-    "altair_tiles>=0.3.0"
+    "altair_tiles>=0.4.0"
 ]
 dev = [
     "hatch>=1.13.0",
