@@ -1,0 +1,23 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Simple Interactive Colored Scatter Plot
+---------------------------------------
+This example shows how to make an interactive scatter plot.
+"""
+# category: interactive charts
+import altair as alt
+from altair.datasets import data
+
+source = data.cars()
+
+alt.Chart(source).mark_circle().encode(
+    x='Horsepower',
+    y='Miles_per_Gallon',
+    color='Origin',
+).interactive()

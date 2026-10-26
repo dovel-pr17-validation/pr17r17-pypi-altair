@@ -1,0 +1,22 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Simple Strip Plot
+-----------------
+A simple example of how to make a strip plot. 
+"""
+# category: simple charts
+import altair as alt
+from altair.datasets import data
+
+source = data.cars()
+
+alt.Chart(source).mark_tick().encode(
+    x='Horsepower:Q',
+    y='Cylinders:O'
+)

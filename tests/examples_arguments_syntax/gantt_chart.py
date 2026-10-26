@@ -1,0 +1,27 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Gantt Chart
+-----------------
+This example shows how to make a simple Gantt chart.
+"""
+# category: advanced calculations
+import altair as alt
+import pandas as pd
+
+source = pd.DataFrame([
+    {"task": "A", "start": 1, "end": 3},
+    {"task": "B", "start": 3, "end": 8},
+    {"task": "C", "start": 8, "end": 10}
+])
+
+alt.Chart(source).mark_bar().encode(
+    x='start',
+    x2='end',
+    y='task'
+)

@@ -1,0 +1,23 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Normalized Stacked Area Chart
+-----------------------------
+This example shows how to make a normalized stacked area chart.
+"""
+# category: area charts
+import altair as alt
+from altair.datasets import data
+
+source = data.iowa_electricity()
+
+alt.Chart(source).mark_area().encode(
+    x="year:T",
+    y=alt.Y("net_generation:Q", stack="normalize"),
+    color="source:N"
+)

@@ -1,0 +1,28 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Bar Chart with Line at Mean
+---------------------------
+This example shows the mean value overlaid on a bar chart.
+"""
+# category: bar charts
+import altair as alt
+from altair.datasets import data
+
+source = data.wheat()
+
+bar = alt.Chart(source).mark_bar().encode(
+    x='year:O',
+    y='wheat:Q'
+)
+
+rule = alt.Chart(source).mark_rule(color='red').encode(
+    y='mean(wheat):Q'
+)
+
+(bar + rule).properties(width=600)

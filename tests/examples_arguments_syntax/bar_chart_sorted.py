@@ -1,0 +1,22 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Sorted Bar Chart
+================
+This example shows a bar chart sorted by a calculated value.
+"""
+# category: bar charts
+import altair as alt
+from altair.datasets import data
+
+source = data.barley()
+
+alt.Chart(source).mark_bar().encode(
+    x='sum(yield):Q',
+    y=alt.Y('site:N', sort='-x')
+)

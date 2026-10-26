@@ -1,0 +1,23 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Layered Area Chart
+------------------
+This example shows a layered area chart.
+"""
+# category: area charts
+import altair as alt
+from altair.datasets import data
+
+source = data.iowa_electricity()
+
+alt.Chart(source).mark_area(opacity=0.3).encode(
+    x="year:T",
+    y=alt.Y("net_generation:Q", stack=None),
+    color="source:N"
+)

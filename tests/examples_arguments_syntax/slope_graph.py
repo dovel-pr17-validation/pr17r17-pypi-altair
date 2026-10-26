@@ -1,0 +1,23 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Slope Graph
+-----------------------
+This example shows how to make Slope Graph.
+"""
+# category: line charts
+import altair as alt
+from altair.datasets import data
+
+source = data.barley()
+
+alt.Chart(source).mark_line().encode(
+    x='year:O',
+    y='median(yield)',
+    color='site'
+)

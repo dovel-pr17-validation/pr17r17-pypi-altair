@@ -1,0 +1,31 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Quantile-Quantile Plot
+----------------------
+A quantile-quantile plot comparing input data to theoretical distributions.
+"""
+# category: distributions
+
+import altair as alt
+from altair.datasets import data
+
+source = data.normal_2d.url
+
+base = alt.Chart(source).transform_quantile(
+    'u',
+    step=0.01,
+    as_ = ['p', 'v']
+).transform_calculate(
+    uniform = 'quantileUniform(datum.p)',
+    normal = 'quantileNormal(datum.p)'
+).mark_point().encode(
+    alt.Y('v:Q')
+)
+
+base.encode(x='uniform:Q') | base.encode(x='normal:Q')

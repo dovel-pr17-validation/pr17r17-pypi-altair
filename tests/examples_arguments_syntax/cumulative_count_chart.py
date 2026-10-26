@@ -1,0 +1,28 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["altair", "pandas"]
+#
+# [tool.marimo.display]
+# cell_output = "above"
+# ///
+"""
+Cumulative Count Chart
+----------------------
+This example shows an area chart with cumulative count.
+Adapted from https://vega.github.io/vega-lite/examples/area_cumulative_freq.html
+
+"""
+# category: distributions
+
+import altair as alt
+from altair.datasets import data
+
+source = data.movies.url
+
+alt.Chart(source).transform_window(
+    cumulative_count="count()",
+    sort=[{"field": "IMDB Rating"}],
+).mark_area().encode(
+    x="IMDB Rating:Q",
+    y=alt.Y("cumulative_count:Q", stack=False)
+)
